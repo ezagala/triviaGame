@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Coffee Trivia!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="jumbotron ">
+        <div class="container">
+            <h1 class="display-4">Coffee Trivia!</h1>
+            <hr>
+            <p class="lead">Spill the beans...</p>
+        </div>
+    </div>
+
+    <button id="startButton" type="button" class="btn btn-lg btn-block btn-outline-success">Start!</button>
+
+    <div id="gamePlay" class="row">
+        <div class="col-12">
+            <h2 id="timer">Time Remaining: 00:00</h2>
+            <hr> 
+            <br> 
+        </div>
+        <div class="col-12">
+            <h4 id="question">The question text will render to the page like this.</h4>
+            <hr> 
+            <ul> 
+                <li> 
+                    <input type="radio" autocomplete="off" unchecked>A: This will be an answer
+                </li> 
+                <li> 
+                    <input type="radio" autocomplete="off" unchecked>B: This will be an answer
+                </li> 
+                <li>
+                    <input type="radio" autocomplete="off" unchecked>C: This will be an answer
+                </li> 
+                <li>
+                    <input type="radio" autocomplete="off" unchecked>D: This will be an answer
+                </li> 
+            </ul>
+        </div>
+        <button id="doneButton" type="button" class="btn btn-outline-primary btn-lg btn-block">Done!</button>
+    </div>
+
+    <div id="results" class="row justify-content-center">
+        <div class="col">
+            <h3 id="resultsHeader">Finished!</h3> 
+            <hr> 
+            <ul id="resultVals">
+                <li>Correct answers:</li>
+                <li>Incorrect answers:</li>
+                <li>Unanswered:</li>
+            </ul>
+        <button id="resetButton" type="button" class="btn btn-outline-danger">Reset</button>
+        </div> 
+    </div>
+
+</div>
+</body>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="assets/javaScript/app.js"></script>
+</html>

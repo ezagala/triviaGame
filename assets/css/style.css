@@ -1,0 +1,29 @@
+#timer, #resultsHeader {
+    text-align: center;
+}
+
+#doneButton {
+    margin-top: 2.5%; 
+}
+
+#startButton {
+    margin-top: 5%; 
+}
+
+#results {
+    margin-left: 25%; 
+    margin-right: 25%; 
+}
+
+#resultVals {
+    margin-left: 33%; 
+    margin-right: 33%; 
+}
+
+#resetButton {
+    margin-left: 45%; 
+}
+
+ul {
+    list-style-type: none;
+}
