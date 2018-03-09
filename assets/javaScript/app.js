@@ -61,6 +61,17 @@ var questionList = [
     },
 ]; 
 
+$(document).ready(function() {
+    console.log("I'm here!")
+    $("#gamePlay").hide(); 
+    $("#results").hide();
+
+    $("#startButton").on("click", function(){
+        $("#startButton").hide(); 
+        $("#gamePlay").show(); 
+    })
+
+}); 
 
 /* 
 
@@ -72,14 +83,13 @@ When the start button is clicked:
      2: Display gamePlay div
      3: Begin countdown on the timer 
      4: Set up game play div
-        For each question: 
+        Loop through question list: 
             1: Append question to question header 
-            2: Fill in questions in the appropriate list items
+            2: append answer and correctAnswer to list items 
         When an answer is selected: 
             1: Remove that question div from the page 
             2: Update incorrect/correct variable
-        Design it such that only one answer may be selected 
-
+        
 If the done button is clicked or the timer runs out : 
     1: Hide the gamePlay div 
     2: Retrieve values from correct/incorrect variables
