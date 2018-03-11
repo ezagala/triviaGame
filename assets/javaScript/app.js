@@ -3,10 +3,14 @@ $(document).ready(function() {
     $("#results").hide();
 
     $("#startButton").on("click", function(){
+        console.log($("#gamePlay").find($(".question")).length)
         $("#startButton").hide(); 
         $("#gamePlay").show(); 
-        timer.start();     
+        timer.start();  
+        answerLogic(); 
     })
+
+    $("#doneButton").on("click", done); 
 
     $("#resetButton").on("click", function(){
         location.reload();  
@@ -14,68 +18,43 @@ $(document).ready(function() {
 
 }); 
 
-var timeRemaining; 
-var correctAnswers; 
-var incorrectAnswers; 
-var unanswered; 
-var questionList = [
-    {
-    question: "Coffee beans are seeds. Where to they come from?", 
-    answer: "Stone Fruit",
-    answer: "Melons", 
-    correctAnswer: 'Cherries', 
-    answer: "Some weird fruit you've never heard of."
-    }, 
-    {
-    question: "Most of the coffee we drink is...", 
-    correctAnswer: "Arabica",
-    answer: "Robusto", 
-    },
-    {
-    question: "Coffee with a dark roast usually has more caffeine than lightly roasted coffee", 
-    answer: "true",
-    correctAnswer: "false"
-    },
-    {
-    question: "The espresso machine was invented in...", 
-    answer: "France",
-    answer: "Portugal", 
-    answer: "Spain", 
-    correctAnswer: "Italy"
-    },
-    {
-    question: "Legend has it that the first coffee forest was found in... ", 
-    correctAnswer: "Ethiopia",
-    answer: "Brazil", 
-    answer: "Columbia", 
-    answer: "Sumatra"
-    },
-    {
-    question: "This is a question", 
-    answer: "Answer one",
-    answer: "Answer two", 
-    correctAnswer: "Answer three", 
-    answer: "Answer four"
-    },
-    {
-    question: "Coffee beans start our as _______ colored cherries.", 
-    correctAnswer: "Yellow",
-    answer: "Red", 
-    answer: "Blue", 
-    answer: "Purple"
-    },
-    {
-    question: "Coffee ranks as the ____ most traded commodity in the word.", 
-    answer: "4th",
-    answer: "9th", 
-    correctAnswer: "2nd", 
-    answer: "16th"
-    }
-]; 
+var correctAnswers = 0; 
+var incorrectAnswers = 0; 
+var unanswered = 0; 
 
+var answerLogic = function() {
+    $("input").on("click", function(){
+        console.log()
+        //Capture the correct class of the clicked radio button
+        var $correct = $(this).context.className;
+        // Capture the question div this input lives in 
+        var $parent = $(this).context.offsetParent;
+        // Logic that determines what variables should be updated
+
+        if ($correct) {
+            correctAnswers++;
+            console.log("correct " + correctAnswers);
+            $parent.remove(); 
+        } else {
+            incorrectAnswers++;
+            console.log("incorrect " + incorrectAnswers);
+            $parent.remove();
+        }
+    })
+}
+
+// Function that ends game play and displays results
+var done = function (){
+    unanswered += $("#gamePlay").find($(".question")).length;
+    $("#gamePlay").remove(); 
+    $("#results").show();
+    $("#correctAnswers").text(' ' + correctAnswers);
+    $("#incorrectAnswers").text(' ' + incorrectAnswers); 
+    $("#unanswered").text(' ' + unanswered); 
+}
 
 var timer = {
-    time: 1000, 
+    time: 45, 
     start: function() {
         setInterval(timer.count, 1000); 
     },
@@ -83,28 +62,26 @@ var timer = {
         if (timer.time !== 0) {
         timer.time--
         var converted = timer.timeConverter(timer.time);
-        console.log(converted); 
+        // console.log(converted); 
         $("#displayTime").text(' ' + converted)
-        } else {
-            $("#gamePlay").remove(); 
-            $("#results").show()
+        } 
+        // This else statement ends the game if the timer runs to zero
+        else {
+            done(); 
         }
     },
     timeConverter: function(t) {
         var minutes = Math.floor(t / 60);
         var seconds = t - (minutes * 60);
-
         if (seconds < 10) {
         seconds = "0" + seconds;
         }
-
         if (minutes === 0) {
         minutes = "00";
         }
         else if (minutes < 10) {
         minutes = "0" + minutes;
         }
-
         return minutes + ":" + seconds;
     }
 }
@@ -119,9 +96,6 @@ When the start button is clicked:
      2: Display gamePlay div
      3: Begin countdown on the timer 
      4: Set up game play div
-        Loop through question list: 
-            1: Append question to question header 
-            2: append answer and correctAnswer to list items 
         When an answer is selected: 
             1: Remove that question div from the page 
             2: Update incorrect/correct variable

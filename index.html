@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<div class="container">
+<div class="container" id="mainContainer">
 
     <div class="jumbotron ">
         <div class="container">
@@ -22,29 +22,148 @@
     <button id="startButton" type="button" class="btn btn-lg btn-block btn-outline-success">Start!</button>
 
     <div id="gamePlay" class="row">
+       
         <div class="col-12">
-            <h2 id="timer">Time Remaining:<span id="displayTime"> 01:00</span></h2>
+            <h2 id="timer">Time Remaining:<span id="displayTime"> 00:45</span></h2>
             <hr> 
             <br> 
         </div>
-        <div class="col-12">
-            <h4 id="question">The question text will render to the page like this.</h4>
+         <!-- Question One -->
+        <div class="col-12 question">
+            <h4 id="question">Coffee beans are seeds. Where do they come from?</h4>
             <hr> 
             <ul> 
                 <li> 
-                    <input type="radio" autocomplete="off" unchecked>A: This will be an answer
+                    <input type="radio" autocomplete="off">A: Stone fruit
                 </li> 
                 <li> 
-                    <input type="radio" autocomplete="off" unchecked>B: This will be an answer
+                    <input type="radio" autocomplete="off">B: Melons
                 </li> 
                 <li>
-                    <input type="radio" autocomplete="off" unchecked>C: This will be an answer
+                    <input type="radio" autocomplete="off" class="correct">C: Cherries
                 </li> 
                 <li>
-                    <input type="radio" autocomplete="off" unchecked>D: This will be an answer
+                    <input type="radio" autocomplete="off">D: Some weird fruit you've never heard of.
                 </li> 
             </ul>
         </div>
+        <!-- Question Two  -->
+        <div class="col-12 question">
+            <h4 id="question">Most of the coffee we drink is...</h4>
+            <hr> 
+            <ul> 
+                <li> 
+                    <input type="radio" autocomplete="off" unchecked class="correct">A: Arabica
+                </li> 
+                <li> 
+                    <input type="radio" autocomplete="off" unchecked>B: Robusto
+                </li> 
+            </ul>
+        </div>
+        <!-- Question Three -->
+        <div class="col-12 question">
+            <h4 id="question">Coffee ranks as the ____ most traded commodity in the word.</h4>
+            <hr> 
+            <ul> 
+                <li> 
+                    <input type="radio" autocomplete="off" unchecked>A: 4th
+                </li> 
+                <li> 
+                    <input type="radio" autocomplete="off" unchecked>B: 9th
+                </li> 
+                <li>
+                    <input type="radio" autocomplete="off" unchecked class="correct">C: 2nd
+                </li> 
+                <li>
+                    <input type="radio" autocomplete="off" unchecked>D: 16th
+                </li> 
+            </ul>
+        </div>
+        <!-- Question Four -->
+        <div class="col-12 question">
+            <h4 id="question">Coffee with a dark roast usually has more caffeine than lightly roasted coffee</h4>
+            <hr> 
+            <ul> 
+                <li> 
+                    <input type="radio" autocomplete="off" unchecked>A: True
+                </li> 
+                <li> 
+                    <input type="radio" autocomplete="off" unchecked class="corrects">B: False
+                </li> 
+            </ul>
+        </div>
+        <!-- Question Five -->
+        <div class="col-12 question">
+            <h4 id="question">Where was the espresso machine invented?</h4>
+            <hr> 
+            <ul> 
+                <li> 
+                    <input type="radio" autocomplete="off" unchecked>A: France
+                </li> 
+                <li> 
+                    <input type="radio" autocomplete="off" unchecked>B: Morocco
+                </li> 
+                <li>
+                    <input type="radio" autocomplete="off" unchecked>C: Spain
+                </li> 
+                <li>
+                    <input type="radio" autocomplete="off" unchecked class="correct">D: Italy
+                </li> 
+            </ul>
+        </div>
+        <!-- Question Six -->
+        <div class="col-12 question">
+            <h4 id="question">Legend has it that the first coffee forest was found in... </h4>
+            <hr> 
+            <ul> 
+                <li> 
+                    <input type="radio" autocomplete="off" unchecked class="correct">A: Ethiopia
+                </li> 
+                <li> 
+                    <input type="radio" autocomplete="off" unchecked>B: Brazil
+                </li> 
+                <li>
+                    <input type="radio" autocomplete="off" unchecked>C: Mexico
+                </li> 
+                <li>
+                    <input type="radio" autocomplete="off" unchecked class="correct">D: Sumatra
+                </li> 
+            </ul>
+        </div>
+        <!-- Question Seven -->
+        <div class="col-12 question">
+                <h4 id="question">Fermentaion is commonly used to help process coffee.</h4>
+                <hr> 
+                <ul> 
+                    <li> 
+                        <input type="radio" autocomplete="off" unchecked class="correct">A: True
+                    </li> 
+                    <li> 
+                        <input type="radio" autocomplete="off" unchecked>B: False
+                    </li> 
+                </ul>
+            </div>
+            <!-- Question Eight -->
+            <div class="col-12 question">
+                <h4 id="question">Coffee beans start our as _______ colored cherries.</h4>
+                <hr> 
+                <ul> 
+                    <li> 
+                        <input type="radio" autocomplete="off" unchecked class="correct">A: Yellow
+                    </li> 
+                    <li> 
+                        <input type="radio" autocomplete="off" unchecked>B: Red
+                    </li> 
+                    <li>
+                        <input type="radio" autocomplete="off" unchecked>C: Blue
+                    </li> 
+                    <li>
+                        <input type="radio" autocomplete="off" unchecked class="correct">D: Purple
+                    </li> 
+                </ul>
+            </div>
+
+        <!-- Done button -->
         <button id="doneButton" type="button" class="btn btn-outline-primary btn-lg btn-block">Done!</button>
     </div>
 
@@ -53,9 +172,9 @@
             <h3 id="resultsHeader">Finished!</h3> 
             <hr> 
             <ul id="resultVals">
-                <li>Correct answers:</li>
-                <li>Incorrect answers:</li>
-                <li>Unanswered:</li>
+                <li>Correct:<span id="correctAnswers"></span></li>
+                <li>Incorrect:<span id="incorrectAnswers"></span></li>
+                <li>Unanswered:<span id="unanswered"></span></li>
             </ul>
         <button id="resetButton" type="button" class="btn btn-outline-danger">Reset</button>
         </div> 

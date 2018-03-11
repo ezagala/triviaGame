@@ -28,3 +28,6 @@ ul {
     list-style-type: none;
 }
 
+#mainContainer {
+    margin-bottom: 2.5%; 
+}
