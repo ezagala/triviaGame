@@ -1,77 +1,113 @@
-var timeRem; 
-var correctAnswers; 
-var incorrectAnswers; 
-var unanswered; 
-var questionList = [
-    {
-    question: "This is a question", 
-    answer: "Answer one",
-    answer: "Answer two", 
-    correctAnswer: "Answer three", 
-    answer: "Answer four"
-    }, 
-    {
-    question: "This is a question", 
-    correctAnswer: "Answer one",
-    answer: "Answer two", 
-    answer: "Answer three", 
-    answer: "Answer four"
-    },
-    {
-    question: "This is a question", 
-    answer: "Answer one",
-    answer: "Answer two", 
-    answer: "Answer three", 
-    correctAnswer: "Answer four"
-    },
-    {
-    question: "This is a question", 
-    answer: "Answer one",
-    answer: "Answer two", 
-    answer: "Answer three", 
-    correctAnswer: "Answer four"
-    },
-    {
-    question: "This is a question", 
-    correctAnswer: "Answer one",
-    answer: "Answer two", 
-    answer: "Answer three", 
-    answer: "Answer four"
-    },
-    {
-    question: "This is a question", 
-    answer: "Answer one",
-    answer: "Answer two", 
-    correctAnswer: "Answer three", 
-    answer: "Answer four"
-    },
-    {
-    question: "This is a question", 
-    correctAnswer: "Answer one",
-    answer: "Answer two", 
-    answer: "Answer three", 
-    answer: "Answer four"
-    },
-    {
-    question: "This is a question", 
-    answer: "Answer one",
-    answer: "Answer two", 
-    correctAnswer: "Answer three", 
-    answer: "Answer four"
-    },
-]; 
-
 $(document).ready(function() {
-    console.log("I'm here!")
     $("#gamePlay").hide(); 
     $("#results").hide();
 
     $("#startButton").on("click", function(){
         $("#startButton").hide(); 
         $("#gamePlay").show(); 
+        timer.start();     
+    })
+
+    $("#resetButton").on("click", function(){
+        location.reload();  
     })
 
 }); 
+
+var timeRemaining; 
+var correctAnswers; 
+var incorrectAnswers; 
+var unanswered; 
+var questionList = [
+    {
+    question: "Coffee beans are seeds. Where to they come from?", 
+    answer: "Stone Fruit",
+    answer: "Melons", 
+    correctAnswer: 'Cherries', 
+    answer: "Some weird fruit you've never heard of."
+    }, 
+    {
+    question: "Most of the coffee we drink is...", 
+    correctAnswer: "Arabica",
+    answer: "Robusto", 
+    },
+    {
+    question: "Coffee with a dark roast usually has more caffeine than lightly roasted coffee", 
+    answer: "true",
+    correctAnswer: "false"
+    },
+    {
+    question: "The espresso machine was invented in...", 
+    answer: "France",
+    answer: "Portugal", 
+    answer: "Spain", 
+    correctAnswer: "Italy"
+    },
+    {
+    question: "Legend has it that the first coffee forest was found in... ", 
+    correctAnswer: "Ethiopia",
+    answer: "Brazil", 
+    answer: "Columbia", 
+    answer: "Sumatra"
+    },
+    {
+    question: "This is a question", 
+    answer: "Answer one",
+    answer: "Answer two", 
+    correctAnswer: "Answer three", 
+    answer: "Answer four"
+    },
+    {
+    question: "Coffee beans start our as _______ colored cherries.", 
+    correctAnswer: "Yellow",
+    answer: "Red", 
+    answer: "Blue", 
+    answer: "Purple"
+    },
+    {
+    question: "Coffee ranks as the ____ most traded commodity in the word.", 
+    answer: "4th",
+    answer: "9th", 
+    correctAnswer: "2nd", 
+    answer: "16th"
+    }
+]; 
+
+
+var timer = {
+    time: 1000, 
+    start: function() {
+        setInterval(timer.count, 1000); 
+    },
+    count: function(){
+        if (timer.time !== 0) {
+        timer.time--
+        var converted = timer.timeConverter(timer.time);
+        console.log(converted); 
+        $("#displayTime").text(' ' + converted)
+        } else {
+            $("#gamePlay").remove(); 
+            $("#results").show()
+        }
+    },
+    timeConverter: function(t) {
+        var minutes = Math.floor(t / 60);
+        var seconds = t - (minutes * 60);
+
+        if (seconds < 10) {
+        seconds = "0" + seconds;
+        }
+
+        if (minutes === 0) {
+        minutes = "00";
+        }
+        else if (minutes < 10) {
+        minutes = "0" + minutes;
+        }
+
+        return minutes + ":" + seconds;
+    }
+}
 
 /* 
 
